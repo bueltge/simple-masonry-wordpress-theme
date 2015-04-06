@@ -106,14 +106,6 @@ function scripts() {
 	);
 
 	wp_register_script(
-		'theme-masonry',
-		get_stylesheet_directory_uri() . '/assets/js/masonry.pkgd.min.js',
-		array( 'jquery' ),
-		'2015-03-29',
-		TRUE
-	);
-
-	wp_register_script(
 		'picturefill',
 		get_stylesheet_directory_uri() . '/assets/js/picturefill.min.js',
 		array(),
@@ -130,6 +122,6 @@ function scripts() {
 	);
 
 	//if ( is_home() ) {
-		wp_enqueue_script( 'simple-masonry-theme' );
+	wp_enqueue_script( 'simple-masonry-theme' );
 	//}
 }
