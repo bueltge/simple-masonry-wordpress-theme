@@ -116,6 +116,11 @@ article {
 	display: none;
 }
 
+/* Loading img from infinite scroll */
+#infscr-loading img {
+  display: none;
+}
+
 #banner, #colophon {
 	background-color: #d1d1d1;
 }
