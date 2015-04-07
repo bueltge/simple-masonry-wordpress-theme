@@ -82,11 +82,16 @@ main {
 	-webkit-column-width: auto;
 }
 
+figure {
+	margin: 2.5em 0 0 0;
+	font-size: .7em;
+}
+
 .home .entry-content img, a {
 	max-width: 100%;
 	height: auto;
 	transition: all 0.2s ease-in-out;
-	backface-visibility: hidden; /* Hide flicker effect on hover */
+	backface-visibility: hidden;
 	-webkit-backface-visibility: hidden;
 	-webkit-transition: all 0.2s ease-in-out;
 	-moz-backface-visibility: hidden;

@@ -44,11 +44,11 @@ $sizes = \SimpleMasonry\Media\get_srcset_string( $attached_image, $size );
 
 	<div class="entry-content" style="width: <?php echo (int) $src[ 1 ]; ?>px; height: <?php echo (int) $src[ 2 ]; ?>px">
 		<?php
-		$string       = '<img alt="' . get_the_title() . '" title="' . get_the_title() . '" src="' . esc_url(
+		$string       = '<figure id="image' . get_the_ID() . '"><img alt="' . get_the_title() . '" title="' . get_the_title() . '" src="' . esc_url(
 				$src[ 0 ]
-			) . '" width="' . (int) $src[ 1 ] . '" height="' . $src[ 2 ] . '"' . $sizes . '/>';
+			) . '" width="' . (int) $src[ 1 ] . '" height="' . $src[ 2 ] . '"' . $sizes . '/><figcaption>' . get_the_title() . '</figcaption></figure>';
 		$allowed_html = array(
-			'img' => array(
+			'img'        => array(
 				'alt'    => array(),
 				'title'  => array(),
 				'src'    => array(),
@@ -56,6 +56,8 @@ $sizes = \SimpleMasonry\Media\get_srcset_string( $attached_image, $size );
 				'height' => array(),
 				'srcset' => array(),
 			),
+			'figure'     => array(),
+			'figcaption' => array(),
 		);
 		echo wp_kses( $string, $allowed_html );
 		?>
