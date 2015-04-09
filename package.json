@@ -1,17 +1,14 @@
 {
   "name": "Masonry",
   "version": "0.0.1",
-  "private": "true",
-  "description": "A simple Masonry WordPress Theme",
+  "private": "false",
+  "description": "Simple theme to display photos ads grip with the help of the css and html.",
   "main": "Gruntfile.js",
-  "scripts": {
-    "test": "Hello World"
-  },
   "author": "Frank Bueltge",
   "license": "GPLv2+",
   "repository": {
     "type": "git",
-    "url": "git://github.com/bueltge/masonry-theme.git"
+    "url": "git@github.com:bueltge/simple-masonry-wordpress-theme.git"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
