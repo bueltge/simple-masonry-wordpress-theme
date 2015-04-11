@@ -34,7 +34,7 @@ function get_first_attached_image( $post_is = NULL ) {
 	}
 
 	// get all images from post
-	$attached_images = (array) get_attached_media( 'image', $post_is );
+	$attached_images = (array) \get_attached_media( 'image', $post_is );
 	// reset, remove array value, work only with object
 	$attached_image = reset( $attached_images );
 
@@ -74,7 +74,7 @@ function get_srcset_string( $attachment_id, $size = 'thumbnail' ) {
 function get_srcset_array( $attachment_id, $size = 'thumbnail' ) {
 
 	// See which image is being returned and bail if none is found
-	if ( ! $image = wp_get_attachment_image_src( $attachment_id, $size ) ) {
+	if ( ! $image = \wp_get_attachment_image_src( $attachment_id, $size ) ) {
 		return FALSE;
 	};
 
@@ -82,7 +82,7 @@ function get_srcset_array( $attachment_id, $size = 'thumbnail' ) {
 	list( , $width, $height ) = $image;
 
 	// image meta
-	$image_meta = wp_get_attachment_metadata( $attachment_id );
+	$image_meta = \wp_get_attachment_metadata( $attachment_id );
 
 	// default sizes
 	$default_sizes = $image_meta[ 'sizes' ];
@@ -116,7 +116,7 @@ function get_srcset_array( $attachment_id, $size = 'thumbnail' ) {
 	foreach ( $default_sizes as $key => $size ) {
 
 		// Reference the size directly by it's pixel dimension
-		$image_src = wp_get_attachment_image_src( $attachment_id, $key );
+		$image_src = \wp_get_attachment_image_src( $attachment_id, $key );
 		$arr[ ]    = $image_src[ 0 ] . ' ' . $size[ 'width' ] . 'w';
 	}
 
