@@ -25,7 +25,7 @@
  * @package    WordPress
  * @subpackage Simple_Masonry_Theme
  * @since      2015-03-29
- * @version    2015-03-29
+ * @version    2015-04-14
  * @author     Frank Bültge <frank@bueltge.de>
  * @license    http://opensource.org/licenses/gpl-license.php GNU Public License
  */
@@ -33,18 +33,18 @@
 namespace SimpleMasonry;
 
 // @see http://php.net/manual/de/class.recursivedirectoryiterator.php
-$directory = new \RecursiveDirectoryIterator( __DIR__ . '/inc' );
-$iterator  = new \RecursiveIteratorIterator( $directory );
+$directory      = new \RecursiveDirectoryIterator( __DIR__ . '/inc' );
+$iterator_items = new \RecursiveIteratorIterator( $directory );
+// Filter to change autoload
+$pathlist       = apply_filters( 'masonry_loader', (array) \iterator_to_array( $iterator_items, TRUE ) );
+// Filter to change file types of autoload
+$filetypes      = apply_filters( 'masonry_loader_file_types', array( 'php' ) );
 
-$pathlist = array();
-foreach ( $iterator as $file ) {
-
-	$pathlist[ ] = $file->getPathname();
-}
-$pathlist = apply_filters( 'masonry_loader', $pathlist );
 foreach ( $pathlist as $file ) {
+	/** @var $file \RecursiveDirectoryIterator */
 
-	if ( ! is_dir( $file ) ) {
+	// Add only php files to the array
+	if ( in_array( strtolower( pathinfo( $file, PATHINFO_EXTENSION ) ), $filetypes ) ) {
 		require_once $file;
 	}
 }
