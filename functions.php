@@ -33,12 +33,17 @@
 namespace SimpleMasonry;
 
 // @see http://php.net/manual/de/class.recursivedirectoryiterator.php
-$directory      = new \RecursiveDirectoryIterator( __DIR__ . '/inc' );
-$iterator_items = new \RecursiveIteratorIterator( $directory );
+$directory = new \RecursiveDirectoryIterator( __DIR__ . '/inc', \RecursiveDirectoryIterator::SKIP_DOTS );
+/**
+ * LEAVES_ONLY (default): Only list files, no directories.
+ * SELF_FIRST (above): List directory and then the files in there.
+ * CHILD_FIRST (w/o example): List files in subdirectory first, then the directory.
+ */
+$iterator_items = new \RecursiveIteratorIterator( $directory, \RecursiveIteratorIterator::LEAVES_ONLY );
 // Filter to change autoload
-$pathlist       = apply_filters( 'masonry_loader', (array) \iterator_to_array( $iterator_items, TRUE ) );
+$pathlist = apply_filters( 'masonry_loader', (array) \iterator_to_array( $iterator_items, TRUE ) );
 // Filter to change file types of autoload
-$filetypes      = apply_filters( 'masonry_loader_file_types', array( 'php' ) );
+$filetypes = apply_filters( 'masonry_loader_file_types', array( 'php' ) );
 
 foreach ( $pathlist as $file ) {
 	/** @var $file \RecursiveDirectoryIterator */

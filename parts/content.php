@@ -17,6 +17,7 @@ $attached_image = \SimpleMasonry\Media\get_first_attached_image( get_the_ID() );
 
 // get path to media file
 $src = wp_get_attachment_image_src( $attached_image, $size );
+
 // No image src, return
 if ( ! isset( $src[ 0 ] ) ) {
 	return NULL;
